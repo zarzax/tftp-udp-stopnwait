@@ -1,0 +1,69 @@
+Mark Young 3082685
+CSCI 4211 
+
+secondAttempt - is a stop and wait file transfer application that 
+runs on top of TCP and creates its own headers to maintain flags,
+offset, sequence numbers, and payload data.  
+
+The server creates a fork per client.  While it gets the filename
+from the client it currently outputs anything as "recvfile.txt" 
+as a testing precaution not to overwrite files in case client &
+server are running on the same machine.
+
+The client takes a filename and host name or will supply it with
+some defaults.
+
+INSTALLATION
+make
+
+Un-INSTALLATION
+make clean
+
+USAGE
+./client -f <filename>
+or
+./client -h <hostname> -f <filename>
+
+./server
+
+
+EXAMPLE OUTPUT
+./client -f client.c
+Starting client connecting to host: 127.0.0.1 on port: 8888 with filename: client.c
+client: connecting to 127.0.0.1
+File 'client.c' of size '0' bytes opened and ready to send filename
+Packet '0' sent
+ACK '0' received
+Packet '1' sent
+ACK '1' received
+Packet '2' sent
+ACK '2' received
+...
+Packet '10' sent
+ACK '10' received
+FIN '11' sent
+Thats all folks..
+
+./server
+server: waiting for connections...
+server: got connection from ::ffff:127.0.0.1
+Packet '0' received
+Checksum OK
+Filename: 'client.c' bytes '1024'
+ACK '0' sent
+Preparing to start writing file 'recvfile.txt'
+Packet '1' received with '1024' bytes with an offset of '1016'
+Checksum OK
+ACK '1' sent
+Packet '2' received with '1024' bytes with an offset of '1016'
+Checksum OK
+...
+Packet '9' received with '1024' bytes with an offset of '754'
+Checksum OK
+ACK '9' sent
+Packet '10' received with '1024' bytes with an offset of '475'
+Checksum OK
+ACK '10' sent
+FIN received...
+FIN '11' sent
+And thanks for all the fish
