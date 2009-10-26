@@ -1,7 +1,7 @@
 Mark Young 3082685
 CSCI 4211 
 
-secondAttempt - is a stop and wait file transfer application that 
+TFTP-UDP-STOPNWAIT - is a stop and wait file transfer application that 
 runs on top of TCP and creates its own headers to maintain flags,
 offset, sequence numbers, and payload data.  
 

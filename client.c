@@ -291,30 +291,12 @@ int main(int argc, char *argv[])
 		int readCounter = 0;
 		int writeCounter = 0;
 		char* readbufptr = NULL;
+		
 		/* read the file, and send it to the client in chunks of size PAYLOAD_SIZ */
 		while((readCounter = fread(databuf,1, PAYLOAD_SIZE, filefd)) > 0)
 		{
 			writeCounter = 0;
 			readbufptr = databuf;
-		
-			// while (writeCounter < readCounter)
-			// {
-			// 
-			// 	readCounter -= writeCounter;
-			// 	readbufptr += writeCounter;
-			// 	
-			// 	// writeCounter = write(socket2, bufptr, readCounter);
-			// 	// 
-			// 	// if (writeCounter == -1) 
-			// 	// {
-			// 	// 	fprintf(stderr, "Could not write file to client!\n");
-			// 	// 	close(socket2); 
-			// 	// 	continue;
-			// 	// }
-			// 	
-			// 	/* create a packet */
-			// 
-			// }
 			
 			databuf[readCounter] = '\0';
 			
